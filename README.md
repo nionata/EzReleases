@@ -36,7 +36,7 @@ jobs:
         uses: actions/checkout@v2
         
       - name: Tag Master
-        uses: nionata/EzTag@vX.X
+        uses: nionata/EzReleases@vX.X
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
 ```

@@ -15,7 +15,7 @@ jobs:
         - name: install dependencies
           run: yarn
 
-        - name: build actions
+        - name: build action
           run: yarn build
 
         - name: commit builds
@@ -23,7 +23,7 @@ jobs:
           with:
             author_name: nionata
             author_email: nionata@ufl.edu
-            message: Built latest actions 
+            message: Built latest 
             add: "*"
             ref: master
           env:
@@ -37,6 +37,6 @@ jobs:
         uses: actions/checkout@v2
         
       - name: Tag Master
-        uses: nionata/EzTag@master
+        uses: nionata/EzReleases@master
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
