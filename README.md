@@ -56,14 +56,12 @@ All dependencies are managed in `package.json`
 
 ### Scripts
 
-#### `yarn test`
+#### `yarn test` - Runs the test suite
 
 > Runs on all PR to `master`
 
 Test the action
 
-#### `yarn build`
+#### `yarn build` - Uses [ncc](https://www.npmjs.com/package/@zeit/ncc) to compile the action into an optimized `src/build/index.js `bundle
 
 > Runs on all PRs merged into `master`
-
-Uses [ncc](https://www.npmjs.com/package/@zeit/ncc) to compile the action into an optimized `src/build/index.js `bundle
