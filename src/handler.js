@@ -1,4 +1,5 @@
 import { context } from '@actions/github'
+import { setOutput } from '@actions/core'
 import { getLastTag, createRelease } from './utils.js'
 
 export default async function run() 
@@ -20,7 +21,7 @@ export default async function run()
 
         // create a base release object
         const { owner, repo } = context.repo
-        const baseRelease = { body, owner, repo }
+        let release = { body, owner, repo, version: null }
 
         //
         // on hotfix, release with an incremented patch version
@@ -41,7 +42,8 @@ export default async function run()
             console.log(`Hotfix - releasing ${version}`)
 
             // create the release and return
-            await createRelease({ ...baseRelease, version }) 
+            release = { ...release, version }
+            await createRelease(release) 
             return
         }
 
@@ -61,7 +63,8 @@ export default async function run()
             console.log(`Versioned - releasing ${version}`)
 
             // create the release and return
-            await createRelease({ ...baseRelease, version }) 
+            release = { ...release, version }
+            await createRelease(release) 
             return
         }
 
@@ -81,8 +84,11 @@ export default async function run()
         console.log(`Minor - releasing ${version}`)
 
         // create the release and return
-        await createRelease({ ...baseRelease, version }) 
-        return
+        release = { ...release, version }
+        await createRelease(release) 
+
+        // set the version output
+        setOutput('version', release.version)
     } catch (error) {
         console.log(error.message)
     }
