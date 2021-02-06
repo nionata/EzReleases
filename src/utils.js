@@ -47,8 +47,8 @@ export const getLastTag = async () =>
     // get the last tag
     const tag = (await execCommand(`git describe --tags ${previousTagSha}`)).stdout.trim()
 
-    // ensure there is a tag
-    if (!tag) return null
+    // if there is not a tag, return a default
+    if (!tag) return ['v', '0', '.', '0']
 
     // return all the tag parts
     return tag.match(/(v)(\d+)(.)(\d+)(.)?(\d+)?/).slice(1).filter(item => item !== undefined)
