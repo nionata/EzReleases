@@ -1,0 +1,38 @@
+name: Build and Tag Action
+
+on:
+  pull_request:
+    branches: [ master ]
+    types: [ closed ]
+
+jobs:
+  build-all-actions:
+      runs-on: ubuntu-latest
+      steps:
+        - name: checkout repo
+          uses: actions/checkout@v2
+        - name: install dependencies
+          run: yarn
+        - name: build actions
+          run: yarn build
+        - name: commit builds
+          uses: EndBug/add-and-commit@v4
+          with:
+            author_name: nionata
+            author_email: nionata@ufl.edu
+            message: Built latest actions 
+            add: "*"
+            ref: master
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  tag-master:
+    needs: build-all-actions
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Tag Master
+        uses: stream-monkey/actions/tag@master
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"

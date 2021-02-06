@@ -1,0 +1,15 @@
+name: Test Action
+
+on:
+  pull_request:
+    branches: [ master ]
+jobs:
+  run-test-suites:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v2
+      - name: install dependencies
+        run: yarn
+      - name: run tests
+        run: yarn test

@@ -1,0 +1,6 @@
+name: 'Action'
+description: ''
+inputs:
+runs:
+  using: 'node12'
+  main: 'src/build/index.js'
