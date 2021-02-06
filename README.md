@@ -2,7 +2,7 @@
 
 Automatic Semantic Versioning for your Repo
 
-![Build and Tag](https://github.com/stream-monkey/actions/workflows/Build%20and%20Tag/badge.svg) ![Test Action](https://github.com/stream-monkey/actions/workflows/Test%20all%20actions/badge.svg)
+![Build and Tag Action](https://github.com/nionata/EzTag/workflows/Build%20and%20Tag%20Action/badge.svg) ![Test Action](https://github.com/nionata/EzTag/workflows/Test%20Action/badge.svg)
 
 <br/>
 

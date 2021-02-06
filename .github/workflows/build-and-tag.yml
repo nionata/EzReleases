@@ -6,15 +6,18 @@ on:
     types: [ closed ]
 
 jobs:
-  build-all-actions:
+  build-action:
       runs-on: ubuntu-latest
       steps:
         - name: checkout repo
           uses: actions/checkout@v2
+
         - name: install dependencies
           run: yarn
+
         - name: build actions
           run: yarn build
+
         - name: commit builds
           uses: EndBug/add-and-commit@v4
           with:
@@ -27,11 +30,12 @@ jobs:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   tag-master:
-    needs: build-all-actions
+    needs: build-action
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        
       - name: Tag Master
         uses: nionata/EzTag@master
         with:
