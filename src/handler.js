@@ -1,4 +1,5 @@
 import { context } from '@actions/github'
+import { getLastTag, createRelease } from 'utils'
 
 export default async function run() 
 {
