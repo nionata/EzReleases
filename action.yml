@@ -1,6 +1,8 @@
-name: 'Action'
-description: ''
-inputs:
+name: 'EzTag'
+description: 'Automatic Semantic Versioning for your Repo'
+  repo_token:
+    required: true
+    description: 'The GITHUB_TOKEN secret'
 runs:
   using: 'node12'
   main: 'src/build/index.js'

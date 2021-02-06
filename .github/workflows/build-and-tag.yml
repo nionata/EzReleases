@@ -33,6 +33,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Tag Master
-        uses: stream-monkey/actions/tag@master
+        uses: nionata/EzTag@master
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"

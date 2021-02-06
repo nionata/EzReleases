@@ -1,6 +1,6 @@
 {
-  "name": "actions",
-  "description": "GitHub actions template",
+  "name": "eztag",
+  "description": "Automatic Semantic Versioning for your Repo",
   "author": "Nicholas Ionata",
   "license": "MIT",
   "dependencies": {
@@ -17,7 +17,7 @@
     "jest": "^26.0.1"
   },
   "scripts": {
-    "test": "jest test/test.js --passWithNoTests",
+    "test": "jest test/*.test.js --passWithNoTests",
     "build": "./build.sh"
   },
   "type": "module"
