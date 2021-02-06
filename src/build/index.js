@@ -7408,11 +7408,11 @@ __webpack_require__.r(__webpack_exports__);
 // EXTERNAL MODULE: ./node_modules/@actions/github/lib/github.js
 var github = __webpack_require__(469);
 
-// EXTERNAL MODULE: ./node_modules/@actions/exec/lib/exec.js
-var exec = __webpack_require__(986);
-
 // EXTERNAL MODULE: ./node_modules/@actions/core/lib/core.js
 var core = __webpack_require__(470);
+
+// EXTERNAL MODULE: ./node_modules/@actions/exec/lib/exec.js
+var exec = __webpack_require__(986);
 
 // CONCATENATED MODULE: ./src/utils.js
 
@@ -7492,6 +7492,7 @@ const createRelease = async ({ body, owner, repo, version}) =>
 
 
 
+
 async function run() 
 {
     const { merged, title, body } = github.context.payload.pull_request
@@ -7511,7 +7512,7 @@ async function run()
 
         // create a base release object
         const { owner, repo } = github.context.repo
-        const baseRelease = { body, owner, repo }
+        let release = { body, owner, repo, version: null }
 
         //
         // on hotfix, release with an incremented patch version
@@ -7532,7 +7533,8 @@ async function run()
             console.log(`Hotfix - releasing ${version}`)
 
             // create the release and return
-            await createRelease({ ...baseRelease, version }) 
+            release = { ...release, version }
+            await createRelease(release) 
             return
         }
 
@@ -7552,7 +7554,8 @@ async function run()
             console.log(`Versioned - releasing ${version}`)
 
             // create the release and return
-            await createRelease({ ...baseRelease, version }) 
+            release = { ...release, version }
+            await createRelease(release) 
             return
         }
 
@@ -7572,8 +7575,11 @@ async function run()
         console.log(`Minor - releasing ${version}`)
 
         // create the release and return
-        await createRelease({ ...baseRelease, version }) 
-        return
+        release = { ...release, version }
+        await createRelease(release) 
+
+        // set the version output
+        Object(core.setOutput)('version', release.version)
     } catch (error) {
         console.log(error.message)
     }
