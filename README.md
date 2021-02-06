@@ -6,12 +6,21 @@ Automated releases with semantic versioning
 
 <br/>
 
-## Inputs
+## Input
 
 ``` yaml
 repo_token:
   required: true
   description: 'The GITHUB_TOKEN secret'
+```
+
+<br/>
+
+## Output
+
+``` yaml
+version:
+  description: 'The created release's version'
 ```
 
 <br/>
