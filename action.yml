@@ -1,4 +1,4 @@
-name: 'EzTag'
+name: 'EzTag Action'
 description: 'Automatic Semantic Versioning for your Repo'
 inputs:
   repo_token:
