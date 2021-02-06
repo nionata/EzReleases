@@ -1,6 +1,6 @@
 {
-  "name": "actions",
-  "description": "GitHub actions template",
+  "name": "eztag",
+  "description": "Automatic Semantic Versioning for your Repo",
   "author": "Nicholas Ionata",
   "license": "MIT",
   "dependencies": {
