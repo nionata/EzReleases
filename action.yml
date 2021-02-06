@@ -1,5 +1,5 @@
-name: 'EzTag Action'
-description: 'Automatic Semantic Versioning for your Repo'
+name: 'EzReleases'
+description: 'Automated releases with semantic versioning'
 inputs:
   repo_token:
     required: true
@@ -7,3 +7,6 @@ inputs:
 runs:
   using: 'node12'
   main: 'src/build/index.js'
+branding:
+  color: 'blue'
+  icon: 'refresh-cw'
