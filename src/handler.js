@@ -2,8 +2,10 @@ import { context } from '@actions/github'
 
 export default async function run() 
 {
+    const { merged, title, body } = context.payload.pull_request
+
     // verify the pull request was merged
-    if(!pr.merged) {
+    if(!merged) {
         console.log('Pr was not merged. Aborting action!')
         return
     }
@@ -12,7 +14,6 @@ export default async function run()
     try {
 
         // based on the title, check what type of release this is
-        const { body, title } = context.payload.pull_request
         const isHotfix = title.match(/hotfix/gi)
         const isVersioned = title.match(/v\d+.\d+(?:.\d+)?/gi)
 
