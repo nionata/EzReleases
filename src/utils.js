@@ -1,4 +1,6 @@
 import { exec } from '@actions/exec'
+import { getInput } from '@actions/core'
+import { getOctokit } from '@actions/github'
 
 export const execCommand = async (command) => 
 {
@@ -50,4 +52,21 @@ export const getLastTag = async () =>
 
     // return all the tag parts
     return tag.match(/(v)(\d+)(.)(\d+)(.)?(\d+)?/).slice(1).filter(item => item !== undefined)
+}
+
+export const createRelease = async ({ body, owner, repo, version}) => 
+{
+    console.log(`Creating release...`)
+
+    const client = getOctokit(getInput('repo_token'))
+
+    const tagCreateResponse = await client.repos.createRelease({
+        body,
+        owner, 
+        repo,
+        tag_name: version,
+        name: version
+    })
+
+    console.log('Release created', JSON.stringify(tagCreateResponse, null, 4))
 }
