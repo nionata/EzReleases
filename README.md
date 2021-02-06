@@ -1,6 +1,6 @@
-# EzTag
+# EzReleases
 
-Automatic Semantic Versioning for your Repo
+Automated releases with semantic versioning
 
 ![Build and Tag Action](https://github.com/nionata/EzTag/workflows/Build%20and%20Tag%20Action/badge.svg) ![Test Action](https://github.com/nionata/EzTag/workflows/Test%20Action/badge.svg)
 
