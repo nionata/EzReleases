@@ -22,18 +22,21 @@ repo_token:
 # ./github/workflows/tag.yml
 
 name: Tag
+
 on:
   pull_request:
     branches: [ master ]
     types: [ closed ]
+
 jobs:
   tag-master:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+        
       - name: Tag Master
-        uses: stream-monkey/actions/tag@vX.X
+        uses: nionata/EzTag@vX.X
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
 ```
