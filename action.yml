@@ -1,5 +1,6 @@
 name: 'EzTag'
 description: 'Automatic Semantic Versioning for your Repo'
+inputs:
   repo_token:
     required: true
     description: 'The GITHUB_TOKEN secret'
