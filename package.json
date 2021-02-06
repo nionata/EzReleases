@@ -1,6 +1,5 @@
 {
-  "name": "eztag",
-  "description": "Automatic Semantic Versioning for your Repo",
+  "name": "ezreleases",
   "author": "Nicholas Ionata",
   "license": "MIT",
   "dependencies": {
