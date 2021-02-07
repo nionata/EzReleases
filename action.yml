@@ -6,7 +6,7 @@ inputs:
     description: 'The GITHUB_TOKEN secret'
 outputs:
   version:
-    description: 'The created release's version'
+    description: 'The created release\'s version'
 runs:
   using: 'node12'
   main: 'src/build/index.js'
